@@ -1,4 +1,4 @@
-algorytmika
+Algorytmika
 ===========
 
-Materiały na zajęcia z Algorytmiki I (liceum)
+Materiały do zajęć znajdują się w [wiki](https://github.com/anagorko/algorytmika/wiki).
