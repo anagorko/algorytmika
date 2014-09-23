@@ -19,9 +19,11 @@ int main()
       cout << "Adaś, Bartek i Cezary mają w sumie mniej niż 21 lat" << endl;
      } 
     
-    else
+    else if ((a+b+c) > 21)
      {
       cout << "Adaś, Bartek i Cezary mają w sumie więcej niż 21 lat" << endl;
+     } else {
+         cout << "Adaś, Bartek i Cezary mają w sumie równo 21 lat" << endl;
      }
   
    }
