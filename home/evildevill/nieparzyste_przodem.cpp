@@ -3,32 +3,27 @@ using namespace std;
 
 int main()
 {
-
- int a = 1, n;
-    
   
-   while (a < 100);
-    {
-     n = (a % 2);
-     if (n = 0)
-      {
-       cout << a << " ";
-       a++;
-      }    
-      else 
-      {
-       cout << " ";
-       a++;
-      }
-     
+  int a = 0;
+ 
+
+  for(a; a <= 100; a++)
+   {
+     if(a % 2)
+       {
+        cout << a << endl;
+       }
     }
- 
 
+  a = 0; 
 
+   for(a; a <= 100; a++)
+   {
+     if(!(a % 2))
+       {
+        cout << a << endl;
+       }
+    }
 
-
-
- 
-return 0;
 
 }
