@@ -14,23 +14,20 @@ int main ()
 		cin >> c;
 		"\n";
 
-	if ( a + b >= c ){
+	if ( a + b >= c && a + c >= b && c + b >= a ){
 	cout << "można z nich zbudować trójkąt.\n";
 		
-		if ( a == b ){
+		if ( a == b || a == c || b == c ){
 		cout << "ten trójkąt jest równoramienny.\n";
 
-			if ( a == b ==c ){
+			if ( a == b && b == c ){
 			cout << "ten trójkąt jest równoboczny.\n";
 			}
 		}
-	if ( a^2 + b^2 == c^2){
+	if ( a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a ){
 	cout << "można zbudować trójkąt prostokątny.\n";
 	}
 	}
-
-
-
 
 
 
