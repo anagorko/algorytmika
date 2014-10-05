@@ -1,7 +1,6 @@
+
 #include <iostream>
 using namespace std;
-
-
 int main ()
 {
 	int i;
@@ -9,15 +8,26 @@ int main ()
 		if ( i % 3 == 0 && i % 5 == 0 ){
 		cout << "foobar\n";
 		}
-			if ( i % 3 == 0 ){
+		
+		
+		else{ 
+			if( i % 5 == 0 ){
 			cout << "bar\n";
 			}
-		else{
-		cout << i << "\n";
+			else{
+				if ( i % 3 == 0){
+				cout << "foo\n";
+				}
+				
+				else{
+				cout << i << "\n";
+				}
+			}
 		}
 
+		
+}
 
 
-	}
-	return 0;
+return 0;
 }
