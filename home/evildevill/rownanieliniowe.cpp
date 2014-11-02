@@ -4,22 +4,23 @@ using namespace std;
 int main()
 {
 
-	int a,b,x;
+	int a,b;
+	int x;
 	
 	cin >> a;
 	cin >> b;
 	cout << a;
 	cout << b;
 
-	for (int i=0, i<=a,i++)
+	for(int i=0; i<=a; i++)
 		{
-			if (a%i=0)
+			if(a%i == 0)
 				{
 					x[i] = i;
 				}
 		}
 
-		if (sizeof x > 2)
+		if(sizeof x > 2)
 			{
 				cout << "NIESKOŃCZONOŚĆ\n";
 			}
