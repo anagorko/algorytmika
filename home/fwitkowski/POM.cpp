@@ -13,7 +13,6 @@ int main ()
 		}else{
 			if(a>p){
 				l++;
-			}else{
 				p = a;
 			}
 		}	
