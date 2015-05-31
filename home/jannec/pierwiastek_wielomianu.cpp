@@ -68,7 +68,7 @@ g=0;
 int o[100000];
 for(int re=0; re<t; re++){
 	for(int er=0; er<u; er++){
-		for(int uu = 0; uu<1; uu++) 	
+		for(int uu = 0; uu<1; uu++){ 	
 			for(int h=r; h>0; h=h-1){
 				o[g]=h*power3(q[x], h)*power3(p[z], g);
 				g++;
