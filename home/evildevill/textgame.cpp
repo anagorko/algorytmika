@@ -6,11 +6,12 @@
 #include <string>
 #include <vector>  // For the command handling function.
 #include <cctype>  // Will be used to eliminate case sensitivity problems.
+#include <stdlib.h>
 
 using namespace std;
 
 enum en_DIRS {N, NE, E, S, SE, W, NW, SW};
-enum en_ROOMS {SALON, ŁAZIENKA, KUCHNIA, GABINET, OGRÓD, SCHOWEK};
+enum en_ROOMS {SALON, LAZIENKA, KUCHNIA, GABINET, OGROD, SCHOWEK};
 enum en_VERBS {GET, DROP, USE, OPEN, CLOSE, EXAMINE, INVENTORY, LOOK};
 
 const int NONE = -1;
@@ -35,24 +36,24 @@ struct room
 void set_rooms(room *rms)
 {
     rms[SALON].description.assign("SALON");
-    rms[SALON].exits_to_room[N] = ŁAZIENKA;
+    rms[SALON].exits_to_room[N] = LAZIENKA;
     rms[SALON].exits_to_room[NE] = NONE;
     rms[SALON].exits_to_room[E] = KUCHNIA;
     rms[SALON].exits_to_room[S] = GABINET;
     rms[SALON].exits_to_room[SE] = NONE;
-    rms[SALON].exits_to_room[W] = OGRÓD;
+    rms[SALON].exits_to_room[W] = OGROD;
     rms[SALON].exits_to_room[NW] = NONE;
     rms[SALON].exits_to_room[SW] = NONE;
 
-    rms[ŁAZIENKA].description.assign("ŁAZIENKA");
-    rms[ŁAZIENKA].exits_to_room[N] = NONE;
-    rms[ŁAZIENKA].exits_to_room[NE] = NONE;
-    rms[ŁAZIENKA].exits_to_room[E] = NONE;
-    rms[ŁAZIENKA].exits_to_room[S] = SALON;
-    rms[ŁAZIENKA].exits_to_room[SE] = KUCHNIA;
-    rms[ŁAZIENKA].exits_to_room[W] = NONE;
-    rms[ŁAZIENKA].exits_to_room[NW] = NONE;
-    rms[ŁAZIENKA].exits_to_room[SW] = OGRÓD;
+    rms[LAZIENKA].description.assign("LAZIENKA");
+    rms[LAZIENKA].exits_to_room[N] = NONE;
+    rms[LAZIENKA].exits_to_room[NE] = NONE;
+    rms[LAZIENKA].exits_to_room[E] = NONE;
+    rms[LAZIENKA].exits_to_room[S] = SALON;
+    rms[LAZIENKA].exits_to_room[SE] = KUCHNIA;
+    rms[LAZIENKA].exits_to_room[W] = NONE;
+    rms[LAZIENKA].exits_to_room[NW] = NONE;
+    rms[LAZIENKA].exits_to_room[SW] = OGROD;
 
     rms[KUCHNIA].description.assign("KUCHNIA");
     rms[KUCHNIA].exits_to_room[N] = NONE;
@@ -61,7 +62,7 @@ void set_rooms(room *rms)
     rms[KUCHNIA].exits_to_room[S] = NONE;
     rms[KUCHNIA].exits_to_room[SE] = NONE;
     rms[KUCHNIA].exits_to_room[W] = SALON;
-    rms[KUCHNIA].exits_to_room[NW] = ŁAZIENKA;
+    rms[KUCHNIA].exits_to_room[NW] = LAZIENKA;
     rms[KUCHNIA].exits_to_room[SW] = GABINET;
 
     rms[GABINET].description.assign("GABINET");
@@ -71,18 +72,18 @@ void set_rooms(room *rms)
     rms[GABINET].exits_to_room[S] = SCHOWEK;
     rms[GABINET].exits_to_room[SE] = NONE;
     rms[GABINET].exits_to_room[W] = NONE;
-    rms[GABINET].exits_to_room[NW] = OGRÓD;
+    rms[GABINET].exits_to_room[NW] = OGROD;
     rms[GABINET].exits_to_room[SW] = NONE;
 
-    rms[OGRÓD].description.assign("OGRÓD");
-    rms[OGRÓD].exits_to_room[N] = NONE;
-    rms[OGRÓD].exits_to_room[NE] = ŁAZIENKA;
-    rms[OGRÓD].exits_to_room[E] = SALON;
-    rms[OGRÓD].exits_to_room[S] = NONE;
-    rms[OGRÓD].exits_to_room[SE] = GABINET;
-    rms[OGRÓD].exits_to_room[W] = NONE;
-    rms[OGRÓD].exits_to_room[NW] = NONE;
-    rms[OGRÓD].exits_to_room[SW] = NONE;
+    rms[OGROD].description.assign("OGROD");
+    rms[OGROD].exits_to_room[N] = NONE;
+    rms[OGROD].exits_to_room[NE] = LAZIENKA;
+    rms[OGROD].exits_to_room[E] = SALON;
+    rms[OGROD].exits_to_room[S] = NONE;
+    rms[OGROD].exits_to_room[SE] = GABINET;
+    rms[OGROD].exits_to_room[W] = NONE;
+    rms[OGROD].exits_to_room[NW] = NONE;
+    rms[OGROD].exits_to_room[SW] = NONE;
 
     rms[SCHOWEK].description.assign("SCHOWEK");
     rms[SCHOWEK].exits_to_room[N] = NONE;
@@ -90,7 +91,7 @@ void set_rooms(room *rms)
     rms[SCHOWEK].exits_to_room[E] = SALON;
     rms[SCHOWEK].exits_to_room[S] = NONE;
     rms[SCHOWEK].exits_to_room[SE] = NONE;
-    rms[SCHOWEK].exits_to_room[W] = OGRÓD;
+    rms[SCHOWEK].exits_to_room[W] = OGROD;
     rms[SCHOWEK].exits_to_room[NW] = NONE;
     rms[SCHOWEK].exits_to_room[SW] = NONE;
 
@@ -101,29 +102,29 @@ void set_rooms(room *rms)
 
 void set_directions(word *dir)
 {
-    dir[NORTH].code = N;
-    dir[NORTH].word = "PÓŁNOC";
+    dir[N].code = N;
+    dir[N].word = "N";
 
-    dir[NORTH].code = NE;
-    dir[NORTH].word = "PÓŁNOCNY WSCHÓD";
+    dir[NE].code = NE;
+    dir[NE].word = "NE";
 
-    dir[NORTH].code = E;
-    dir[NORTH].word = "WSCHÓD";
+    dir[E].code = E;
+    dir[E].word = "E";
 
-    dir[NORTH].code = S;
-    dir[NORTH].word = "POŁUDNIE";
+    dir[S].code = S;
+    dir[S].word = "S";
 
-    dir[NORTH].code = SE;
-    dir[NORTH].word = "POŁUDNIOWY WSCHÓD";
+    dir[SE].code = SE;
+    dir[SE].word = "SE";
 
-    dir[NORTH].code = W;
-    dir[NORTH].word = "ZACHÓD";
+    dir[W].code = W;
+    dir[W].word = "W";
 
-    dir[NORTH].code = NW;
-    dir[NORTH].word = "PÓŁNOCNY ZACHÓD";
+    dir[NW].code = NW;
+    dir[NW].word = "NW";
 
-    dir[NORTH].code = SW;
-    dir[NORTH].word = "POŁUDNIOWY ZACHÓD";
+    dir[SW].code = SW;
+    dir[SW].word = "SW";
 
 }
 
@@ -239,6 +240,13 @@ void look_around(int loc, room *rms, word *dir)
 bool parser(int &loc, string wd1, string wd2, word *dir, word *vbs, room *rms)
 {
     int i;
+    
+    if (loc == SCHOWEK && wd1 == dir[E].word) {
+        loc = rand() % 5;
+        cout << "I am now in a " << rms[loc].description << "." << endl;
+        return true;
+    }
+    
     for(i = 0; i < DIRS; i++)
     {
         if(wd1 == dir[i].word)
