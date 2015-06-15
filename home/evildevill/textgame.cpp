@@ -11,7 +11,7 @@
 using namespace std;
 
 enum en_DIRS {N, NE, E, S, SE, W, NW, SW};
-enum en_ROOMS {SALON, LAZIENKA, KUCHNIA, GABINET, OGROD, SCHOWEK};
+enum en_ROOMS {MAINHALL, TOILET, KITCHEN, OFFICE, GARDEN, SAFE};
 enum en_VERBS {GET, DROP, USE, OPEN, CLOSE, EXAMINE, INVENTORY, LOOK};
 
 const int NONE = -1;
@@ -35,65 +35,65 @@ struct room
 
 void set_rooms(room *rms)
 {
-    rms[SALON].description.assign("SALON");
-    rms[SALON].exits_to_room[N] = LAZIENKA;
-    rms[SALON].exits_to_room[NE] = NONE;
-    rms[SALON].exits_to_room[E] = KUCHNIA;
-    rms[SALON].exits_to_room[S] = GABINET;
-    rms[SALON].exits_to_room[SE] = NONE;
-    rms[SALON].exits_to_room[W] = OGROD;
-    rms[SALON].exits_to_room[NW] = NONE;
-    rms[SALON].exits_to_room[SW] = NONE;
+    rms[MAINHALL].description.assign("MAINHALL");
+    rms[MAINHALL].exits_to_room[N] = TOILET;
+    rms[MAINHALL].exits_to_room[NE] = NONE;
+    rms[MAINHALL].exits_to_room[E] = KITCHEN;
+    rms[MAINHALL].exits_to_room[S] = OFFICE;
+    rms[MAINHALL].exits_to_room[SE] = NONE;
+    rms[MAINHALL].exits_to_room[W] = GARDEN;
+    rms[MAINHALL].exits_to_room[NW] = NONE;
+    rms[MAINHALL].exits_to_room[SW] = NONE;
 
-    rms[LAZIENKA].description.assign("LAZIENKA");
-    rms[LAZIENKA].exits_to_room[N] = NONE;
-    rms[LAZIENKA].exits_to_room[NE] = NONE;
-    rms[LAZIENKA].exits_to_room[E] = NONE;
-    rms[LAZIENKA].exits_to_room[S] = SALON;
-    rms[LAZIENKA].exits_to_room[SE] = KUCHNIA;
-    rms[LAZIENKA].exits_to_room[W] = NONE;
-    rms[LAZIENKA].exits_to_room[NW] = NONE;
-    rms[LAZIENKA].exits_to_room[SW] = OGROD;
+    rms[TOILET].description.assign("TOILET");
+    rms[TOILET].exits_to_room[N] = NONE;
+    rms[TOILET].exits_to_room[NE] = NONE;
+    rms[TOILET].exits_to_room[E] = NONE;
+    rms[TOILET].exits_to_room[S] = MAINHALL;
+    rms[TOILET].exits_to_room[SE] = KITCHEN;
+    rms[TOILET].exits_to_room[W] = NONE;
+    rms[TOILET].exits_to_room[NW] = NONE;
+    rms[TOILET].exits_to_room[SW] = GARDEN;
 
-    rms[KUCHNIA].description.assign("KUCHNIA");
-    rms[KUCHNIA].exits_to_room[N] = NONE;
-    rms[KUCHNIA].exits_to_room[NE] = NONE;
-    rms[KUCHNIA].exits_to_room[E] = NONE;
-    rms[KUCHNIA].exits_to_room[S] = NONE;
-    rms[KUCHNIA].exits_to_room[SE] = NONE;
-    rms[KUCHNIA].exits_to_room[W] = SALON;
-    rms[KUCHNIA].exits_to_room[NW] = LAZIENKA;
-    rms[KUCHNIA].exits_to_room[SW] = GABINET;
+    rms[KITCHEN].description.assign("KITCHEN");
+    rms[KITCHEN].exits_to_room[N] = NONE;
+    rms[KITCHEN].exits_to_room[NE] = NONE;
+    rms[KITCHEN].exits_to_room[E] = NONE;
+    rms[KITCHEN].exits_to_room[S] = NONE;
+    rms[KITCHEN].exits_to_room[SE] = NONE;
+    rms[KITCHEN].exits_to_room[W] = MAINHALL;
+    rms[KITCHEN].exits_to_room[NW] = TOILET;
+    rms[KITCHEN].exits_to_room[SW] = OFFICE;
 
-    rms[GABINET].description.assign("GABINET");
-    rms[GABINET].exits_to_room[N] = SALON;
-    rms[GABINET].exits_to_room[NE] = KUCHNIA;
-    rms[GABINET].exits_to_room[E] = NONE;
-    rms[GABINET].exits_to_room[S] = SCHOWEK;
-    rms[GABINET].exits_to_room[SE] = NONE;
-    rms[GABINET].exits_to_room[W] = NONE;
-    rms[GABINET].exits_to_room[NW] = OGROD;
-    rms[GABINET].exits_to_room[SW] = NONE;
+    rms[OFFICE].description.assign("OFFICE");
+    rms[OFFICE].exits_to_room[N] = MAINHALL;
+    rms[OFFICE].exits_to_room[NE] = KITCHEN;
+    rms[OFFICE].exits_to_room[E] = NONE;
+    rms[OFFICE].exits_to_room[S] = SAFE;
+    rms[OFFICE].exits_to_room[SE] = NONE;
+    rms[OFFICE].exits_to_room[W] = NONE;
+    rms[OFFICE].exits_to_room[NW] = GARDEN;
+    rms[OFFICE].exits_to_room[SW] = NONE;
 
-    rms[OGROD].description.assign("OGROD");
-    rms[OGROD].exits_to_room[N] = NONE;
-    rms[OGROD].exits_to_room[NE] = LAZIENKA;
-    rms[OGROD].exits_to_room[E] = SALON;
-    rms[OGROD].exits_to_room[S] = NONE;
-    rms[OGROD].exits_to_room[SE] = GABINET;
-    rms[OGROD].exits_to_room[W] = NONE;
-    rms[OGROD].exits_to_room[NW] = NONE;
-    rms[OGROD].exits_to_room[SW] = NONE;
+    rms[GARDEN].description.assign("GARDEN");
+    rms[GARDEN].exits_to_room[N] = NONE;
+    rms[GARDEN].exits_to_room[NE] = TOILET;
+    rms[GARDEN].exits_to_room[E] = MAINHALL;
+    rms[GARDEN].exits_to_room[S] = NONE;
+    rms[GARDEN].exits_to_room[SE] = OFFICE;
+    rms[GARDEN].exits_to_room[W] = NONE;
+    rms[GARDEN].exits_to_room[NW] = NONE;
+    rms[GARDEN].exits_to_room[SW] = NONE;
 
-    rms[SCHOWEK].description.assign("SCHOWEK");
-    rms[SCHOWEK].exits_to_room[N] = NONE;
-    rms[SCHOWEK].exits_to_room[NE] = NONE;
-    rms[SCHOWEK].exits_to_room[E] = SALON;
-    rms[SCHOWEK].exits_to_room[S] = NONE;
-    rms[SCHOWEK].exits_to_room[SE] = NONE;
-    rms[SCHOWEK].exits_to_room[W] = OGROD;
-    rms[SCHOWEK].exits_to_room[NW] = NONE;
-    rms[SCHOWEK].exits_to_room[SW] = NONE;
+    rms[SAFE].description.assign("SAFE");
+    rms[SAFE].exits_to_room[N] = NONE;
+    rms[SAFE].exits_to_room[NE] = NONE;
+    rms[SAFE].exits_to_room[E] = MAINHALL;
+    rms[SAFE].exits_to_room[S] = NONE;
+    rms[SAFE].exits_to_room[SE] = NONE;
+    rms[SAFE].exits_to_room[W] = GARDEN;
+    rms[SAFE].exits_to_room[NW] = NONE;
+    rms[SAFE].exits_to_room[SW] = NONE;
 
 
 }
@@ -241,7 +241,7 @@ bool parser(int &loc, string wd1, string wd2, word *dir, word *vbs, room *rms)
 {
     int i;
     
-    if (loc == SCHOWEK && wd1 == dir[E].word) {
+    if (loc == SAFE && wd1 == dir[E].word) {
         loc = rand() % 5;
         cout << "I am now in a " << rms[loc].description << "." << endl;
         return true;
@@ -314,7 +314,7 @@ int main()
     word verbs[VERBS];
     set_verbs(verbs);
 
-    int location = SALON; // using the enumerated type identifier, of course.
+    int location = MAINHALL; // using the enumerated type identifier, of course.
 
     while(word_1 != "QUIT")
     {
