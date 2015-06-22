@@ -13,11 +13,13 @@ using namespace std;
 enum en_DIRS {N, NE, E, S, SE, W, NW, SW};
 enum en_ROOMS {MAINHALL, TOILET, KITCHEN, OFFICE, GARDEN, SAFE};
 enum en_VERBS {GET, DROP, USE, OPEN, CLOSE, EXAMINE, INVENTORY, LOOK};
+enum en_ITEMS {KEY, BALL, KNIFE};
 
 const int NONE = -1;
 const int DIRS = 8;
 const int ROOMS = 6;
 const int VERBS = 8;
+const int ITEMS = 3;
 
 struct word
 {
@@ -234,11 +236,14 @@ void look_around(int loc, room *rms, word *dir)
         }
     }
 }
+// ----------------------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------------------
 
 bool parser(int &loc, string wd1, string wd2, word *dir, word *vbs, room *rms)
 {
+	cout << "parser wd1=" << wd1 << ", wd2=" << wd2 << endl;
+
     int i;
     
     if (loc == SAFE && wd1 == dir[E].word) {
@@ -277,6 +282,14 @@ bool parser(int &loc, string wd1, string wd2, word *dir, word *vbs, room *rms)
             break;
         }
     }
+
+    if(VERB_ACTION == GET)
+	{
+		if(wd2=="abc")
+			{
+			cout << "masz abc";
+			}
+	}
     
     if(VERB_ACTION == LOOK)
     {
@@ -292,10 +305,6 @@ bool parser(int &loc, string wd1, string wd2, word *dir, word *vbs, room *rms)
     }
     return false;
 }
-
-// ----------------------------------------------------------------------------------------
-
-
 
 // ----------------------------------------------------------------------------------------
 
