@@ -1,0 +1,39 @@
+using namespace std;
+
+vector<int> solution(int N, vector<int> &A) {
+   
+   vector<int> L(N);
+   
+   int maxa;
+   
+   for(int i=0; i<N; i++)
+   {
+       L[i] = 0;
+   }
+   
+   for(int j=0; j<A.size(); j++)
+   {
+       if (A[j]>N) {
+           maxa =0;
+           
+           for(int k=0; k<N; k++)
+           {
+               if(A[k]>maxa)
+               {
+                   maxa = L[k];
+               }
+               
+           }
+           
+           for(int l=0; l<N; l++)
+           {
+               L[l]=maxa;
+           }
+           
+       } else {
+           L[A[j]-1]++; 
+       }
+   }
+   
+   return L;
+}
