@@ -1,0 +1,30 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+
+//wez dwie liczby
+
+	int a, b;
+	
+	cin >> a;
+	cin >> b;
+	
+//policz sume
+
+	int c = a;	
+	
+	for(int i = a+1; i<=b; i++)
+		{
+			c=c+i;
+		}
+
+//wypisz sume
+
+	cout << c;
+
+return 0;
+	
+}
