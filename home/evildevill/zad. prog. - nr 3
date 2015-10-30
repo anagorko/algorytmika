@@ -1,0 +1,33 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+
+float DAP = 100;	//DAPHNE
+float CLEO = 100;	//CLEO
+	for(int i = 1; i<=2000; i++)
+		{
+			cout << "Rok " << i << endl;
+			cout << endl;			
+			DAP = DAP + (100 * 0.1);
+			cout << "Wartosc inwestycji Daphne: " << DAP << endl;
+			
+			cout << endl;
+			
+			CLEO = CLEO + (CLEO*0.05);
+			cout << "Wartosc inwestycji Cleo: " << CLEO << endl;
+			
+			cout << endl;
+		
+				if(CLEO>DAP)
+					{
+					cout << "Wartosc inwestycji Cleo przekroczy wartosc inwestycji Dafne po " << i << " latach";
+					break;
+					}
+		}	
+
+return 0;
+	
+}

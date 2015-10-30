@@ -1,0 +1,31 @@
+// you can use includes, for example:
+// #include <algorithm>
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+vector<int> solution(int N, vector<int> &A) {
+    // write your code in C++11
+vector<int> l(N);
+int d=0;
+for(int i=0; i<N; i++)
+    l[i]=0;
+    
+for(int i=0; i<A.size(); i++){      
+    if(A[i]<=N){        
+        l[A[i]-1]++;
+    }
+    if(A[i]==N+1){
+        for(int j; j<N; j++){       //szukamy najwiekszej wartości l;
+            if(A[j]>d)
+            d=l[j];
+        }
+        for(int p; p<N; p++)    // wypełniamy l znalezioną najwieksza wartością
+        l[p]=d;
+    }
+}
+
+
+return l;
+
+}
