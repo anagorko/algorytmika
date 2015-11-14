@@ -1,0 +1,12 @@
+// you can use includes, for example:
+// #include <algorithm>
+
+int solution(int A, int B, int K) {
+
+int mod=0;
+for(int i=A; i<=B; i++){
+    if(i%K==0)
+        mod++;
+}
+return mod;
+}
